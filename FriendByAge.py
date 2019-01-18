@@ -1,3 +1,7 @@
+# data:
+# userID, name, age, friendsCount
+# Find average number of friends per age group
+
 from mrjob.job import MRJob
 
 class FriendByAge(MRJob):
