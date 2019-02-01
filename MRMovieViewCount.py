@@ -2,6 +2,7 @@ from mrjob.job import MRJob
 from mrjob.step import MRStep
 
 # Sort by movieID with highest view count
+# Needs a second set of map/red
 class MRMovieViewCount(MRJob):
     def steps(self):
         return [
@@ -19,7 +20,7 @@ class MRMovieViewCount(MRJob):
         yield movieID, sum(counts)
         
     def mapper_make_counts_key(self, movieID, count):
-        yield '%04d'%int(count), movieID
+        yield '%04d'%int(count), movieID # Just switch it
         
     def reducer_output_movieID(self, count, movieIDs):
         for movie in movieIDs:
